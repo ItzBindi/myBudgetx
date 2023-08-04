@@ -36,7 +36,7 @@ function ExpenseTabs() {
       <Card.Body>
         <Card.Text>
           {
-            totalExpenses === 0 ? (
+            monthBudget === 0 ? (
               <h1>Budget Not Entered Yet</h1>
             ) : (
               <>
