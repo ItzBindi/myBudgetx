@@ -14,6 +14,8 @@ import SubBars from '../Subscriptions/chart';
 import UtilBars from '../Utilities/chart';
 import LeisureBars from '../Leisure/chart';
 import Auth from '../../utils/auth';
+import ModalDash from './modal';
+import ExpenseTabs from './expenses';
 
 
 
@@ -37,10 +39,12 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Dashboard({ open }) {
-  console.log(localStorage.getItem('leisures'));
   const leisures = JSON.parse(localStorage.getItem('leisures')) || [];
   const subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || [];
   const utilities = JSON.parse(localStorage.getItem('utilities')) || [];
+
+
+
   return (
     <>
       {
@@ -77,14 +81,14 @@ export default function Dashboard({ open }) {
                     <Card>
                       <CardMedia image="/static/images/cards/contemplative-reptile.jpg" title="green iguana" />
                       <CardContent sx={{ mt: 2, mb: 2 }}>
-                        <Typography gutterBottom variant="h5" component="div">
+                        <Typography gutterBottom variant="h5" component="div" align="center">
                           Welcome to Your Dashboard!
                         </Typography>
-                        <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
-                          Below, you can find an overview of your monthly expenses broken out by categories, Subscriptions, Utilities, and Leisurely activities.
+                        <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary" align="center">
+                        <ModalDash />
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          The bar graph below will help you to visualize where you are spending the most money, and allow you to dictate where you can either cut costs, or spend a bit more to give yourself flexibility!
+                        <Typography variant="body2" color="text.secondary" align="center">
+                          <ExpenseTabs />
                         </Typography>
 
                       </CardContent>

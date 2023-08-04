@@ -17,7 +17,6 @@ function ModalLeisure({ addLubby }) {
 
   const handleAmountChange = (event) => {
     const enteredValue = +event.target.value;
-    console.log(typeof enteredValue);
     // Use a regular expression to check if the entered value matches the allowed pattern.
     if (/^\d+(\.\d{0,2})?$/.test(enteredValue)) {
       setLeisureAmount(enteredValue);
@@ -29,14 +28,13 @@ function ModalLeisure({ addLubby }) {
   };
 
   const handleSaveChanges = async () => {
-    console.log('hello');
     const { data } = await addLeisure({
       variables: {
         price: leisureAmount,
         name: leisureName,
       }
 
-    }); console.log(data);
+    }); 
     // Add the new subscription to the list in the parent component (Subs.js)
     addLubby({ leisure: data.addLeisure.name, amount: data.addLeisure.price });
     handleClose();

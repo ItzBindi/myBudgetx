@@ -16,7 +16,6 @@ function ModalUtil({ addUtility }) {
 
   const handleAmountChange = (event) => {
     const enteredValue = +event.target.value;
-    console.log(typeof enteredValue);
     // Use a regular expression to check if the entered value matches the allowed pattern.
     if (/^\d+(\.\d{0,2})?$/.test(enteredValue)) {
       setUtilityAmount(enteredValue);
@@ -28,14 +27,13 @@ function ModalUtil({ addUtility }) {
   };
 
   const handleSaveChanges = async () => {
-    console.log('hello');
     const { data } = await addUtil({
       variables: {
         price: utilityAmount,
         name: utilityName,
       }
 
-    }); console.log(data);
+    }); 
     // Add the new subscription to the list in the parent component (Subs.js)
     addUtility({ utility: data.addUtil.name, amount: data.addUtil.price });
     handleClose();
