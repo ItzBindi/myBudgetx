@@ -7,35 +7,45 @@ function ExpenseTabs() {
   const leisures = JSON.parse(localStorage.getItem('leisures')) || [];
   const subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || [];
   const utilities = JSON.parse(localStorage.getItem('utilities')) || [];
-  const monthBudget = JSON.parse(localStorage.getItem('budget')) || [];
+  const monthBudget = JSON.parse(localStorage.getItem('budget')) || 0;
+
+  const formattedMonthBudget = monthBudget.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   const allExpenses = [...leisures, ...subscriptions, ...utilities];
+  console.log("allExpenses", allExpenses);
 
-const allAmounts = allExpenses.map((expense) => expense.amount);
+  const allAmounts = allExpenses.map((expense) => parseFloat(expense.amount));
+  console.log("allAmounts", allAmounts);
 
-const totalExpenses = allAmounts.reduce((a, b) => a + b, 0);
+  const totalExpenses = allAmounts.reduce((a, b) => a + b, 0);
+  console.log("totalExpenses", totalExpenses);
+  const formattedTotalExpenses = totalExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+  const remainingBudget = monthBudget - totalExpenses;
+  const formattedRemainingBudget = remainingBudget.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   return (
     <Card bg="dark" text="light">
       <Card.Header>
         <Nav variant="pills" defaultActiveKey="#first" className='justify-content-center'>
           <Nav.Item >
-            <Nav.Link href="#first">Your Budget For The Month</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="#link">Your Budget After Expenses</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="#tuff">Tuff</Nav.Link>
+            <Nav className="brkdwnFnt">Your Monthly Breakdown</Nav>
           </Nav.Item>
         </Nav>
       </Card.Header>
       <Card.Body>
-        <Card.Title>Your Budget For This Month</Card.Title>
         <Card.Text>
-        {
-          totalExpenses.length === 0 ? (<h1>Budget Not Entered Yet</h1>) : (monthBudget)
-        }
+          {
+            totalExpenses === 0 ? (
+              <h1>Budget Not Entered Yet</h1>
+            ) : (
+              <>
+                <h1>Your Budget For This Month: {formattedMonthBudget}</h1>
+                <h1>Your Total Expenses: {formattedTotalExpenses}</h1>
+                <h1>Your Budget After Expenses: {formattedRemainingBudget}</h1>
+              </>
+            )
+          }
         </Card.Text>
       </Card.Body>
     </Card>
