@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
+import Typography from '@mui/material/Typography';
 
 
 export default function SubBars({ subscriptions }) {
@@ -19,11 +20,16 @@ export default function SubBars({ subscriptions }) {
   const dataPoints2 = sortedSubsNames2.map((name) => [name]);
 
   return (
-    <BarChart
-      xAxis={[{ scaleType: 'band', data: dataPoints2 }]}
-      series={[{ data: dataPoints }]}
-      width={500}
-      height={300}
-    />
+    <div>
+      <Typography className="top3" variant="h6" gutterBottom>
+        Top 3 Subscriptions
+      </Typography>
+      <BarChart
+        xAxis={[{ scaleType: 'band', data: dataPoints2 }]}
+        series={[{ data: dataPoints }]}
+        width={500}
+        height={300}
+      />
+    </div>
   );
 }

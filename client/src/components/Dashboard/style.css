@@ -1,7 +1,12 @@
+  @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 .custom-modal-body {
     color: black; /* Set the text color to black */
   }
 
   .brkdwnFnt {
     font-size: 1.5rem;
+  }
+
+  .hello {
+    font-family: 'Gloria Hallelujah', cursive;
   }

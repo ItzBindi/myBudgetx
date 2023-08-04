@@ -19,6 +19,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Auth from '../../utils/auth';
 
 
+
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',

@@ -16,6 +16,9 @@ import LeisureBars from '../Leisure/chart';
 import Auth from '../../utils/auth';
 import ModalDash from './modal';
 import ExpenseTabs from './expenses';
+import { borders } from '@mui/system';
+
+
 
 
 
@@ -40,11 +43,23 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Dashboard({ open }) {
   const leisures = JSON.parse(localStorage.getItem('leisures')) || [];
+  console.log("leisures",leisures);
   const subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || [];
   const utilities = JSON.parse(localStorage.getItem('utilities')) || [];
 
+const totalLeisure = leisures.reduce((acc, curr) => acc + curr.amount, 0);
+const formattedLeisure =  totalLeisure.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
+const totalSubs = subscriptions.reduce((acc, curr) => acc + curr.amount, 0);
+const formattedSubs =  totalSubs.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
+const totalUtils = utilities.reduce((acc, curr) => acc + curr.amount, 0);
+const formattedUtils =  totalUtils.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+const commonStyles = {
+  bgcolor: 'background.paper',
+ 
+};
   return (
     <>
       {
@@ -98,11 +113,13 @@ export default function Dashboard({ open }) {
                     <Card>
                       <CardContent>
                         <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                          <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
-                            Your Subscriptions
+                          <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div" align='center'>
+                            Your Total Expenses For Subscriptions: {formattedSubs}
+                            <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
                             {
                               subscriptions.length === 0 ? (<h1>no data</h1>) : (<SubBars subscriptions={subscriptions} />)
                             }
+                            </Box>
                           </Typography>
                         </Box>
                       </CardContent>
@@ -112,11 +129,13 @@ export default function Dashboard({ open }) {
                     <Card>
                       <CardContent>
                         <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                          <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
-                            Your Utilities
+                          <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div" align='center'>
+                            Your Total Expenses For Utilities: {formattedUtils}
+                            <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
                             {
                               utilities.length === 0 ? (<h1>no data</h1>) : (<UtilBars utilities={utilities} />)
                             }
+                            </Box>
                           </Typography>
                         </Box>
                       </CardContent>
@@ -126,11 +145,13 @@ export default function Dashboard({ open }) {
                     <Card>
                       <CardContent>
                         <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                          <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
-                            Your Leisures
+                          <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div" align='center'>
+                            Your Total Expenses For Leisure: {formattedLeisure}
+                            <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
                             {
                               leisures.length === 0 ? (<h1>no data</h1>) : (<LeisureBars leisures={leisures} />)
                             }
+                            </Box>
                           </Typography>
                         </Box>
                       </CardContent>

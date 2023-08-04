@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
+import Typography from '@mui/material/Typography';
 
 export default function UtilBars({ utilities}) {
 
@@ -18,11 +19,16 @@ export default function UtilBars({ utilities}) {
   const dataPoints2 = sortedUtilitiesNames2.map((name) => [name]);
   
   return (
+    <div>
+      <Typography className="top3" variant="h6" gutterBottom>
+        Top 3 Utilities
+      </Typography>
     <BarChart
       xAxis={[{ scaleType: 'band', data: dataPoints2 }]}
       series={[{ data: dataPoints }]}
       width={500}
       height={300}
     />
+    </div>
   );
 }

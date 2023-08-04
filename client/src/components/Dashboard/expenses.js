@@ -12,13 +12,10 @@ function ExpenseTabs() {
   const formattedMonthBudget = monthBudget.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   const allExpenses = [...leisures, ...subscriptions, ...utilities];
-  console.log("allExpenses", allExpenses);
 
   const allAmounts = allExpenses.map((expense) => parseFloat(expense.amount));
-  console.log("allAmounts", allAmounts);
 
   const totalExpenses = allAmounts.reduce((a, b) => a + b, 0);
-  console.log("totalExpenses", totalExpenses);
   const formattedTotalExpenses = totalExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   const remainingBudget = monthBudget - totalExpenses;
@@ -40,9 +37,9 @@ function ExpenseTabs() {
               <h1>Budget Not Entered Yet</h1>
             ) : (
               <>
-                <h1>Your Budget For This Month: {formattedMonthBudget}</h1>
-                <h1>Your Total Expenses: {formattedTotalExpenses}</h1>
-                <h1>Your Budget After Expenses: {formattedRemainingBudget}</h1>
+                <h1 className="hello">Your Budget For This Month: {formattedMonthBudget}</h1>
+                <h1 className="hello">Your Total Expenses: {formattedTotalExpenses}</h1>
+                <h1 className="hello">Your Budget After Expenses: {formattedRemainingBudget}</h1>
               </>
             )
           }
