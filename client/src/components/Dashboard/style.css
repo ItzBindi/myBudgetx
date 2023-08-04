@@ -10,3 +10,8 @@
   .hello {
     font-family: 'Gloria Hallelujah', cursive;
   }
+
+  .invalid-input {
+    border-color: red;
+  }
+  

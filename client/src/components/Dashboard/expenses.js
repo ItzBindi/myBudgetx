@@ -7,7 +7,7 @@ function ExpenseTabs() {
   const leisures = JSON.parse(localStorage.getItem('leisures')) || [];
   const subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || [];
   const utilities = JSON.parse(localStorage.getItem('utilities')) || [];
-  const monthBudget = JSON.parse(localStorage.getItem('budget')) || 0;
+  const monthBudget = JSON.parse(localStorage.getItem('budget')) || 0 ;
 
   const formattedMonthBudget = monthBudget.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
