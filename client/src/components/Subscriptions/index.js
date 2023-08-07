@@ -17,6 +17,8 @@ import SubList from './list';
 import Navbar from '../Navbar/index';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Auth from '../../utils/auth';
+import Redirect from './redirect';
+
 
 const darkTheme = createTheme({
   palette: {
@@ -151,7 +153,7 @@ const Subs = ({ open }) => {
             </ThemeProvider>
           </React.Fragment>
         ) : (
-          <a href={"/"}>Please login to view</a>
+          <Redirect />
         )
       }
     </>

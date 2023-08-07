@@ -17,6 +17,7 @@ import LeisureList from './list';
 import Navbar from '../Navbar/index';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Auth from '../../utils/auth';
+import Redirect from './redirect';
 
 
 
@@ -150,7 +151,8 @@ export default function Subs({ open }) {
             </React.Fragment>
           </ThemeProvider>
         ) : (
-          <a href={"/"}>Please login to view</a>
+          
+          <Redirect />
         )
       }
     </>

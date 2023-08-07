@@ -17,6 +17,8 @@ import Auth from '../../utils/auth';
 import ModalDash from './modal';
 import ExpenseTabs from './expenses';
 import { borders } from '@mui/system';
+import Redirect from './redirect';
+import MainnImage from './assets/fintrackr_better.png';
 
 
 
@@ -164,7 +166,8 @@ const commonStyles = {
             </React.Fragment>
           </ThemeProvider>
         ) : (
-          <a href={"/"}>Please login to view</a>
+          
+          <Redirect />
         )
       }
     </>
