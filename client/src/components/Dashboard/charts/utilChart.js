@@ -2,11 +2,9 @@ import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import Typography from '@mui/material/Typography';
 
-export default function UtilBars({ utilities}) {
+export default function UtilBars2({ utilities}) {
 
   const sortedUtilities = utilities.sort((a, b) => b.amount - a.amount);
-
-  const sortedAmounts = sortedUtilities.map((utility) => utility.amount);
 
   const sortedUtilitiesNames = sortedUtilities.map((utility) => utility.utility);
 
@@ -23,11 +21,11 @@ export default function UtilBars({ utilities}) {
   return (
     <div>
       <Typography className="top3" variant="h6" gutterBottom>
-        All Utilities
+        Top 3 Utilities
       </Typography>
     <BarChart
-      xAxis={[{ scaleType: 'band', data: sortedUtilitiesNames }]}
-      series={[{ data: sortedAmounts }]}
+      xAxis={[{ scaleType: 'band', data: dataPoints2 }]}
+      series={[{ data: dataPoints }]}
       width={500}
       height={300}
     />

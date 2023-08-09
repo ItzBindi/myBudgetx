@@ -1,12 +1,12 @@
+
+
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import Typography from '@mui/material/Typography';
 
-export default function LeisureBars({leisures}) {
+export default function LeisureBars2({leisures}) {
 
   const sortedLeisures = leisures.sort((a, b) => b.amount - a.amount);
-
-  const sortedAmounts = sortedLeisures.map((leisure) => leisure.amount);
 
   const sortedLeisuresNames = sortedLeisures.map((leisure) => leisure.leisure);
 
@@ -23,11 +23,11 @@ export default function LeisureBars({leisures}) {
   return (
     <div>
       <Typography className="top3" variant="h6" gutterBottom>
-        All Leisures
+        Top 3 Leisures
       </Typography>
     <BarChart
-      xAxis={[{ scaleType: 'band', data: sortedLeisuresNames}]}
-      series={[{ data: sortedAmounts}]}
+      xAxis={[{ scaleType: 'band', data: dataPoints2}]}
+      series={[{ data: dataPoints}]}
       width={500}
       height={300}
     />

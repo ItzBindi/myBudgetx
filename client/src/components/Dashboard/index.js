@@ -19,6 +19,11 @@ import ExpenseTabs from './expenses';
 import { borders } from '@mui/system';
 import Redirect from './redirect';
 import MainnImage from './assets/fintrackr_better.png';
+import LeisureBars2 from './charts/leisureChart';
+import SubBars2 from './charts/subChart';
+import UtilBars2 from './charts/utilChart';
+import { format } from 'date-fns';
+
 
 
 
@@ -59,9 +64,12 @@ const totalUtils = utilities.reduce((acc, curr) => acc + curr.amount, 0);
 const formattedUtils =  totalUtils.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
 const commonStyles = {
-  bgcolor: 'background.paper',
- 
+  bgcolor: 'background.paper', 
 };
+
+const currentDateTime = new Date();
+
+
   return (
     <>
       {
@@ -100,6 +108,8 @@ const commonStyles = {
                       <CardContent sx={{ mt: 2, mb: 2 }}>
                         <Typography gutterBottom variant="h5" component="div" align="center">
                           Welcome to Your Dashboard!
+                          <br></br>
+                          {format(currentDateTime, 'MMMM do, yyyy h:mm a')}
                         </Typography>
                         <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary" align="center">
                         <ModalDash />
@@ -119,7 +129,7 @@ const commonStyles = {
                             Your Total Expenses For Subscriptions: {formattedSubs}
                             <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
                             {
-                              subscriptions.length === 0 ? (<h1>no data</h1>) : (<SubBars subscriptions={subscriptions} />)
+                              subscriptions.length === 0 ? (<h1>no data</h1>) : (<SubBars2 subscriptions={subscriptions} />)
                             }
                             </Box>
                           </Typography>
@@ -135,7 +145,7 @@ const commonStyles = {
                             Your Total Expenses For Utilities: {formattedUtils}
                             <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
                             {
-                              utilities.length === 0 ? (<h1>no data</h1>) : (<UtilBars utilities={utilities} />)
+                              utilities.length === 0 ? (<h1>no data</h1>) : (<UtilBars2 utilities={utilities} />)
                             }
                             </Box>
                           </Typography>
@@ -151,7 +161,7 @@ const commonStyles = {
                             Your Total Expenses For Leisure: {formattedLeisure}
                             <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
                             {
-                              leisures.length === 0 ? (<h1>no data</h1>) : (<LeisureBars leisures={leisures} />)
+                              leisures.length === 0 ? (<h1>no data</h1>) : (<LeisureBars2 leisures={leisures} />)
                             }
                             </Box>
                           </Typography>
