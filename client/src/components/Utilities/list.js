@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import ModalUtil from './modal';
 import './style.css'
 
 

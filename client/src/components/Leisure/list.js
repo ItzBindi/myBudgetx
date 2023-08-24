@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import ModalLeisure from './modal';
 
 
 function LeisureList({ leisures, onDeleteLeisure, onEditLeisure }) {

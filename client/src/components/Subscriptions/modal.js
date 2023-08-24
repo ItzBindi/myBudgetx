@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { ADD_SUB } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
-import { red } from '@mui/material/colors';
 
 
 function ModalSub({ addSubscription }) {

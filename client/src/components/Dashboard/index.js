@@ -5,20 +5,13 @@ import Paper from '@mui/material/Paper';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import SubBars from '../Subscriptions/chart';
-import UtilBars from '../Utilities/chart';
-import LeisureBars from '../Leisure/chart';
 import Auth from '../../utils/auth';
 import ModalDash from './modal';
 import ExpenseTabs from './expenses';
-import { borders } from '@mui/system';
 import Redirect from './redirect';
-import MainnImage from './assets/fintrackr_better.png';
 import LeisureBars2 from './charts/leisureChart';
 import SubBars2 from './charts/subChart';
 import UtilBars2 from './charts/utilChart';
@@ -30,8 +23,7 @@ import { format } from 'date-fns';
 
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Navbar from '../Navbar/index';
-import MainImage from './assets/fintracker.png';
+
 
 
 const darkTheme = createTheme({
